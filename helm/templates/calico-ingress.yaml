@@ -1,0 +1,17 @@
+{{- if .Values.calico.flags.ingressPolicyEnabled }}
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  name: {{ .Values.calico.ingress.ingressName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  order: 1750
+  types:
+  - Ingress
+  ingress:
+  - action: Allow
+    source:
+      selector: role == 'ingress'
+{{- end }}

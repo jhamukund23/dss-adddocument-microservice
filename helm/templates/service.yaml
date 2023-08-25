@@ -1,0 +1,17 @@
+# Network service for pods in deployment
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  name: {{ .Values.deployment.name }}-svc
+spec:
+  ports:
+    {{- range .Values.service.ports }}
+    - name: {{ .name }}
+      port: {{ .port }}
+      protocol: {{ .protocol }}
+      targetPort: {{ .targetPort }}
+    {{- end }}
+  selector:
+    component: {{ .Values.deployment.name }}

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "dss-adddocument-microservice": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

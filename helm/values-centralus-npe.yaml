@@ -1,0 +1,86 @@
+# Namespace definition
+namespace: idm-dss
+
+# Deployment vars
+deployment:
+  name: idm-dss-adddocument-microservice
+  replicas: 1
+  revisionHistoryLimit: 6
+  image: humana-idm-dss-docker-virtual.jfrog.io/dss-adddocument-microservice:1.0.320
+  imagePullSecrets: 
+    - idm-dss-cr
+  containerPorts:
+    - 8080 
+  resources:
+    limits:
+      memory: "1Gi"
+      cpu: "1"
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+  env:
+    VAULT_CLIENT_SECRET: "vault-auth-sa-secret"
+
+# Calico policy template vars
+calico:
+  componentSelector: component == 'idm-dss-adddocument-microservice'
+  flags:
+    ingressPolicyEnabled: false
+    ipEgressPolicyEnabled: false
+    portEgressPolicyEnabled: false
+  ingress:
+    ingressName: idm-dss-adddocument-microservice-ingress-allow
+  ipEgress:
+    cidrs: [ ]
+    ipEgressName: idm-dss-adddocument-microservice-egress-ip
+  portEgress:
+    ports: [ ]
+    portEgressName: idm-dss-adddocument-microservice-egress-http
+
+# Service vars
+service:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080 
+
+# Istio template vars
+istio:
+  # enable flags can be used to turn on or off specific istio features
+  flags:
+    virtualServiceEnabled: false
+  # istioVirtualService
+  virtualService:
+    namespace: idm-dss
+    gateways:
+      - idm-dss-ig
+    match:
+      - appEndpoints:
+          - 
+        destinations:
+          - portNumber: 8080
+            host: idm-dss-adddocument-microservice-svc
+    appTopLevelDomains:
+      - null
+## Below are custom variables   
+appConfiguration:  
+  DB_SERVER_NAME: "idmdssdbdev-dev.postgres.database.azure.com"
+  DB_DATABASE: "idmdsspgsqldb"
+  DB_SERVER_PORT: "5432"
+  DB_USER_ID: "AZ_PGSQL_idmdssdbdev-dev_idmdsspgsqldb_writer@idmdssdbdev-dev.postgres.database.azure.com" 
+  KAFKA_BOOTSTRAPSERVER: "dev-brokers-messaging-az.npe.cdf.humana.com:9094"
+  KAFKA_SASL_USER_NAME: "CDF_EH_IDM_DSS_DEV"
+  KAFKA_GROUP_ID: "cgrp-IDM-DSS-*"
+  KAFKA_TOPIC_INBOUND: "idm-dss-adddocument-inbound"
+  KAFKA_TOPIC_OUTBOUND: "idm-dss-adddocument-mrm-out"
+  STORAGE_ACCOUNTNAME: "idmdssstoragedev"
+  BLOB_CONTAINERNAME: "dsscontainer"
+  AZURE_CLIENT_ID: "e15b4a37-4d43-4b8d-912c-bee04d179a73"
+  AZURE_TENANT_ID: "56c62bbe-8598-4b85-9e51-1ca753fa50f2"
+  VAULT_LOGIN_URL: "https://preprod.vault.humana.net/v1/auth/kubernetes/shared001-0-centralus-npe/login"
+  VAULT_URL: "https://preprod.vault.humana.net/"
+  VAULT_ENVIRONMENT: "nsshared001" 
+  VAULT_ROLE: "idm-dss.appsvc030606-kubernetes-role"
+  VAULT_PATH: "idm-dss.appsvc030606/app_metadata"
+   

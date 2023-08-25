@@ -1,0 +1,48 @@
+# Deployment definition used for managing component specific pods
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  name: {{ .Values.deployment.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit }}
+  selector:
+    matchLabels:
+      component: {{ .Values.deployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.namespace }}
+        component: {{ .Values.deployment.name }}
+    spec:
+      containers:
+      - name: {{ .Values.deployment.name }}
+        image: {{ .Values.deployment.image }}
+        ports:
+          {{- range .Values.deployment.containerPorts }}
+          - containerPort: {{ . }}
+          {{- end }}
+        resources:
+          limits:
+            memory: {{ .Values.deployment.resources.limits.memory }}
+            cpu: {{ .Values.deployment.resources.limits.cpu }}
+          requests:
+            memory: {{ .Values.deployment.resources.requests.memory }}
+            cpu: {{ .Values.deployment.resources.requests.cpu }}
+        envFrom:
+          - configMapRef:
+              name: {{ .Values.deployment.name }}-cm 
+        env:
+         - name: VAULT_CLIENT_TOKEN
+           valueFrom:
+              secretKeyRef:
+                name: {{ .Values.deployment.env.VAULT_CLIENT_SECRET}}   
+                key: token
+                optional: false
+      imagePullSecrets:
+      {{- range .Values.deployment.imagePullSecrets }}
+      - name: {{ . }}
+      {{- end }}

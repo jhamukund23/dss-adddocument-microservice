@@ -1,0 +1,23 @@
+repoMetaData:
+  version: 1
+  platform: github
+  organization: humana
+  project: Cloud-3-0-EMU
+  repositoryType: git
+  repository: dss-adddocument-microservice
+  changeTemplateId: VAZURE-APPSVC084946
+  sonarqubeProjectKey: HealthInformationTechnology.ImagingandDocumentManagement.IDM.DSS3.AddDocument.Microservice
+  iserverAssociatedRecords:
+    - type: asset
+      id: 0000
+      addedBy: noone@humana.com
+    - type: component
+      id: 0000
+      addedBy: noone@humana.com
+  serviceNowAssociatedRecords:
+    # Specify one of the following, as appropriate for your use case.
+    # Note the app ID will always be 'APPSVC' followed by 6 numbers 
+    - type: AppService
+      id: APPSVC084946
+      description: dss-adddocument-microservice
+      technology: DotNetCore

@@ -1,0 +1,21 @@
+{{- if .Values.calico.flags.ipEgressPolicyEnabled }}
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  name: {{ .Values.calico.portEgress.portEgressName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  selector: {{ .Values.calico.componentSelector }}
+  order: 1701
+  types:
+  - Egress
+  egress:
+  - action: Allow
+    destination:
+      ports:
+      {{- range .Values.calico.portEgress.ports }}
+      - {{ . }}
+      {{- end }}
+{{- end }}

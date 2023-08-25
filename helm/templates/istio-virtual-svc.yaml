@@ -1,0 +1,33 @@
+{{- if .Values.istio.flags.virtualServiceEnabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  name: {{ .Values.deployment.name }}-ivs
+  namespace: {{ .Values.istio.virtualService.namespace }}
+spec:
+  hosts:
+  {{- range .Values.istio.virtualService.appTopLevelDomains }}
+  - {{ . }}
+  {{- end }}
+  gateways:
+  {{- range .Values.istio.virtualService.gateways }}
+  - {{ . }}
+  {{- end }}
+  http:
+  {{- range .Values.istio.virtualService.match }}
+  - match:
+    {{- range .appEndpoints }}
+    - uri:
+        prefix: {{ . }}
+    {{- end }}
+    route:
+      {{- range .destinations }}
+      - destination:
+          port:
+            number: {{ .portNumber }}
+          host: {{ .host }}
+      {{- end }}
+  {{- end }}
+{{- end }}

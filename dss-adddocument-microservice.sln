@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dss-adddocument-microservice-test", "dss-adddocument-microservice-test\dss-adddocument-microservice-test.csproj", "{3B37BEFD-D35F-4B4F-9DB5-1AEF401A1B58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dss-adddocument-microservice-data", "dss-adddocument-microservice-data\dss-adddocument-microservice-data.csproj", "{56B3BE03-0E91-4346-885C-4D8087859CB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dss-adddocument-microservice-handler", "dss-adddocument-microservice-handler\dss-adddocument-microservice-handler.csproj", "{419D4CAE-0BB3-4394-874E-D9B28B35FCC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dss-adddocument-microservice-services", "dss-adddocument-microservice-services\dss-adddocument-microservice-services.csproj", "{13B29136-42F0-4286-9224-46C3D80E37B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dss-adddocument-microservice-models", "dss-adddocument-microservice-models\dss-adddocument-microservice-models.csproj", "{ACFB659D-486A-434F-B721-71A05EA4F99B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dss-adddocument-microservice", "dss-adddocument-microservice\dss-adddocument-microservice.csproj", "{188BA89E-CE32-43B7-9F5D-26E7449762A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B37BEFD-D35F-4B4F-9DB5-1AEF401A1B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B37BEFD-D35F-4B4F-9DB5-1AEF401A1B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B37BEFD-D35F-4B4F-9DB5-1AEF401A1B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B37BEFD-D35F-4B4F-9DB5-1AEF401A1B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56B3BE03-0E91-4346-885C-4D8087859CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56B3BE03-0E91-4346-885C-4D8087859CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56B3BE03-0E91-4346-885C-4D8087859CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56B3BE03-0E91-4346-885C-4D8087859CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{419D4CAE-0BB3-4394-874E-D9B28B35FCC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{419D4CAE-0BB3-4394-874E-D9B28B35FCC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{419D4CAE-0BB3-4394-874E-D9B28B35FCC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{419D4CAE-0BB3-4394-874E-D9B28B35FCC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13B29136-42F0-4286-9224-46C3D80E37B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13B29136-42F0-4286-9224-46C3D80E37B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13B29136-42F0-4286-9224-46C3D80E37B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13B29136-42F0-4286-9224-46C3D80E37B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACFB659D-486A-434F-B721-71A05EA4F99B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFB659D-486A-434F-B721-71A05EA4F99B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFB659D-486A-434F-B721-71A05EA4F99B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFB659D-486A-434F-B721-71A05EA4F99B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{188BA89E-CE32-43B7-9F5D-26E7449762A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{188BA89E-CE32-43B7-9F5D-26E7449762A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{188BA89E-CE32-43B7-9F5D-26E7449762A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{188BA89E-CE32-43B7-9F5D-26E7449762A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {133E9AD9-9A2B-4A2F-81F2-4E6CCE5A7411}
+	EndGlobalSection
+EndGlobal
